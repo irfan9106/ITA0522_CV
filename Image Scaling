@@ -1,0 +1,13 @@
+import cv2
+image = cv2.imread(r"C:\Users\skmoh\OneDrive\Pictures\f1-the-movie-8k-3840x2160-22458.jpg")
+resized_image = cv2.resize(image, (500, 300))
+print("Original Size:", image.shape)
+print("Resized Size:", resized_image.shape)
+cv2.namedWindow("Original Image", cv2.WINDOW_NORMAL)
+cv2.namedWindow("Resized Image", cv2.WINDOW_NORMAL)
+cv2.resizeWindow("Original Image", 800, 600)
+cv2.resizeWindow("Resized Image", 500, 300)
+cv2.imshow("Original Image", image)
+cv2.imshow("Resized Image (500x300)", resized_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
