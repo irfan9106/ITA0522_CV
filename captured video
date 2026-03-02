@@ -1,0 +1,16 @@
+import cv2
+cap = cv2.VideoCapture(r"C:\Users\skmoh\Downloads\videos\jiohotstartelugu_c77bb4b14b9b4d0d8df6d3acabaf4d03.mp4")
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+    small_frame = cv2.resize(frame, (500, 300))
+    cv2.imshow("Normal Video", small_frame)
+    cv2.imshow("Slow Motion", small_frame)
+    cv2.waitKey(100)
+    cv2.imshow("Fast Motion", small_frame)
+    cv2.waitKey(10)
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+cap.release()
+cv2.destroyAllWindows()
