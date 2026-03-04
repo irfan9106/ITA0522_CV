@@ -1,0 +1,28 @@
+import cv2
+import numpy as np
+image = cv2.imread(r"C:\Users\skmoh\OneDrive\Pictures\f1-the-movie-8k-3840x2160-22458.jpg")
+if image is None:
+    print("Error: Image not found")
+    exit()
+image = cv2.resize(image,(500,300))
+rows,cols = image.shape[:2]
+print("Width:",cols)
+print("Height:",rows)
+pts1 = np.float32([
+[50,50],
+[450,50],
+[50,250],
+[450,250]
+])
+pts2 = np.float32([
+[0,0],
+[500,0],
+[0,300],
+[500,300]
+])
+matrix = cv2.getPerspectiveTransform(pts1,pts2)
+perspective_image = cv2.warpPerspective(image,matrix,(500,300))
+cv2.imshow("Original Image",image)
+cv2.imshow("Perspective Transform",perspective_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
